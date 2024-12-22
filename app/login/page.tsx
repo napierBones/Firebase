@@ -7,7 +7,7 @@ import { auth } from "@/app/firebase/config";
 import Link from "next/link";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation";
-import useStore from "@/store/useStore";
+
 
 
 
@@ -28,7 +28,7 @@ const LoginPage = () => {
 
 const router=useRouter()
 const [signInwithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
-const { togggleLoggedIn } = useStore();
+
   const onSubmit = async (data: LoginForm) => {
     try {
         const res=await signInwithEmailAndPassword(data.email, data.password);
@@ -75,7 +75,7 @@ const { togggleLoggedIn } = useStore();
             Login
           </button>
           <span>
-            Don't have an account?{" "}
+            Dont have an account?{" "}
             <Link
               href="/signup"
               className="text-blue-500 hover:underline"

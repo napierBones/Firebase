@@ -1,11 +1,11 @@
 import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, FieldError} from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import useStore from "@/store/useStore";
 import { addDoc, collection, serverTimestamp } from "@firebase/firestore";
 import db from "../firebase/firestore";
-import { useRouter } from "next/navigation";
+
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -74,7 +74,7 @@ const AddCheckInForm: React.FC = () => {
             />
             {errors.title && (
               <p className="text-red-500 text-xs mt-1">
-                {(errors.title as any).message}
+                {(errors.title as  FieldError).message}
               </p>
             )}
           </div>
@@ -97,7 +97,7 @@ const AddCheckInForm: React.FC = () => {
             />
             {errors.rooms && (
               <p className="text-red-500 text-xs mt-1">
-                {(errors.rooms as any).message}
+                {(errors.rooms as FieldError).message}
               </p>
             )}
           </div>
@@ -120,7 +120,7 @@ const AddCheckInForm: React.FC = () => {
             />
             {errors.guests && (
               <p className="text-red-500 text-xs mt-1">
-                {(errors.guests as any).message}
+                {(errors.guests as FieldError).message}
               </p>
             )}
           </div>
@@ -148,7 +148,7 @@ const AddCheckInForm: React.FC = () => {
   />
   {errors.image && (
     <p className="text-red-500 text-xs mt-1">
-      {(errors.image as any).message}
+      {(errors.image as FieldError).message}
     </p>
   )}
 </div>

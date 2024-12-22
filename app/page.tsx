@@ -6,20 +6,16 @@ import CardCheckin from '@/app/Components/CardCheckin';
 import PopUpAddCheckin from '@/app/Components/PopUpAddCheckin';
 import useStore from '@/store/useStore';
 import PopUpDetailsCheckin from '@/app/Components/PopUpDetailsCheckin';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '@/app/firebase/config';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+
+
 
 export default function Home() {
   const {
     isPopupAddCheckinVisible,
     isPopupDetailsCheckinVisible,
-    isLoggedIn,
-    togggleLoggedIn,
+
   } = useStore();
-  const router = useRouter();
-  const [user] = useAuthState(auth);
+
 
 
 

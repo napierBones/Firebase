@@ -1,8 +1,16 @@
 import useStore from '@/store/useStore';
 import React, { useEffect, useState } from 'react';
 import DetailsForm from './DetailsForm';
-import { doc, getDoc } from '@firebase/firestore';
+import { doc, getDoc, Timestamp  } from '@firebase/firestore';
 import db from '../firebase/firestore';
+
+interface CheckInData {
+  rooms: number;
+  title: string;
+  createdAt: Timestamp;
+  image: string;
+  guests: number;
+}
 
 
 export default function PopUpDetailsCheckin() {
@@ -10,7 +18,7 @@ export default function PopUpDetailsCheckin() {
   const handleClick = () => {
     togglePopupDetailsCheckin(); 
   };
-  const [checkinDetails, setCheckinDetails] = useState<any>(null);
+  const [checkinDetails, setCheckinDetails] = useState<CheckInData | undefined>(undefined);;
 
   useEffect(() => {
     const fetchCheckinDetails = async () => {
@@ -23,7 +31,7 @@ export default function PopUpDetailsCheckin() {
         console.log('docSnapdata', docSnap.data());
 
         if (docSnap.exists()) {
-          setCheckinDetails(docSnap.data()); // Set the data to state
+          setCheckinDetails(docSnap.data()as CheckInData)
         } else {
           console.error('No such document!');
         }

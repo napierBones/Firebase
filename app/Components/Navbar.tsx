@@ -7,8 +7,8 @@ import { GoInfo } from 'react-icons/go';
 import { IoIosArrowDown } from 'react-icons/io';
 import { auth } from '../firebase/config';
 import { signOut } from 'firebase/auth';
-import { useEffect } from 'react';
-import useStore from '@/store/useStore';
+
+
 const Navbar = () => {
   const [user] = useAuthState(auth);
 

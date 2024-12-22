@@ -1,6 +1,6 @@
 'use client';
 import useStore from '@/store/useStore';
-import React, { useState } from 'react';
+
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { MdWavingHand } from 'react-icons/md';
 import { auth } from '../firebase/config';
